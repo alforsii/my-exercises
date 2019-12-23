@@ -31,3 +31,22 @@ console.log('Output for: profile3', profile3);
 //we seal object
 Object.seal(profile3);
 profile3.address = '1025'; //now we cannot add property
+
+//4 how to remove duplicate from an array?
+let num = [1, 2, 3, 3, 4, 5, 12, 2, 23, 12, 3, 2];
+//one
+let newArr = [];
+for (let i = 0; i < num.length; i++) {
+  if (newArr.indexOf(num[i]) == -1) {
+    newArr.push(num[i]);
+  }
+}
+console.log('Output for: newArr', newArr);
+
+//how to do the same without for loop or forEach
+//there new method Set()
+let sort = new Set(num); //it returns as an object
+console.log('Output for: sort', sort);
+//to convert object to an array
+sort = [...sort];
+console.log('Output for: sort', sort);
