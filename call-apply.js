@@ -205,3 +205,6 @@ bound(1, 2, 3);
 //or passing array
 bound(...arr);
 // console.log(bound(...arr)); // 8
+//or
+obj2.add.bind(obj1)(...arr);
+// console.log(obj2.add.bind(obj1)(...arr)); // 8
