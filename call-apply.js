@@ -1,13 +1,14 @@
 //1.call() method
 //Get arguments without passing it to a function
 let argsToArr = function() {
-  console.log(arguments); //result: Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+  //   console.log(arguments); //result: Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+  return arguments;
 };
 argsToArr(1, 2, 3);
 
 //to convert arguments to an array we can use array method slice()
 argsToArr = function() {
-  console.log([].slice.call(arguments)); // result [1,2,3]
+  //   console.log([].slice.call(arguments)); // result [1,2,3]
   return [].slice.call(arguments);
 };
 argsToArr(1, 2, 3);
@@ -21,20 +22,21 @@ let cat = function(legs, isDomestic) {
   this.isDomestic = isDomestic;
 };
 let lion = new cat(4, false);
-console.log(lion); //result: cat {legs: 4, isDomestic: false}
+// console.log(lion); //result: cat {legs: 4, isDomestic: false}
 // ---------------------------------------------------------
 //2.apply() method
 //apply method unlike call method, it converts array into regular
 //lets find min of numbers
-console.log(Math.min(1, 2, 3)); //result: 1
+Math.min(1, 2, 3);
+// console.log(Math.min(1, 2, 3)); //result: 1
 //what if we want to find min of given array numbers
 let numArray = [1, 2, 3];
 //we can use spread operator
 Math.min(...numArray);
-console.log(Math.min(...numArray)); // 1
+// console.log(Math.min(...numArray)); // 1
 //or another way we can apply method
 Math.min.apply(null, numArray);
-console.log(Math.min.apply(null, numArray)); // 1
+// console.log(Math.min.apply(null, numArray)); // 1
 // ----------------------------------------------------
 //3.bind() method
 let button = function(content) {
@@ -42,7 +44,8 @@ let button = function(content) {
 };
 
 button.prototype.click = function() {
-  console.log(`${this.content} clicked`);
+  //   console.log(`${this.content} clicked`);
+  return `${this.content} clicked`;
 };
 let newButton = new button('add');
 newButton.click(); //add clicked
@@ -77,7 +80,8 @@ myObj = {
     cb();
   },
   parse() {
-    console.log('parse called');
+    // console.log('parse called');
+    return 'parse called';
   },
   render() {
     this.asyncGet(() => {
@@ -94,7 +98,8 @@ myObj = {
     cb();
   },
   parse() {
-    console.log('parse called');
+    // console.log('parse called');
+    return 'parse called';
   },
   render() {
     let that = this; //solution
@@ -112,7 +117,8 @@ myObj = {
     cb();
   },
   parse() {
-    console.log('parse called');
+    // console.log('parse called');
+    return 'parse called';
   },
   render() {
     this.asyncGet(
@@ -138,7 +144,7 @@ let obj2 = {
 //we can combine this 2 with call,apply or bind
 //whichever method going to execute goes first
 let result = obj2.add.call(obj1, 2); // 2 === a
-console.log('Output for: result', result); // result: 4
+// console.log(result); // result: 4
 //so in obj2.add by using call() this.num will be looking for num in obj1 and this keyword will be referred to obj1 in this case.
 //call takes 2 arguments: one is where to look another current argument
 // obj2.method.call(obj1,obj2(arg))
@@ -153,20 +159,26 @@ obj2 = {
 // obj2.add.call(obj1, a, b, c);
 //first argument in call have to be the object where we reference this keyword
 obj2.add.call(obj1, 1, 2, 3);
-console.log(obj2.add.call(obj1, 1, 2, 3)); // 8
+// console.log(obj2.add.call(obj1, 1, 2, 3)); // 8
 
 //what if we want to pass argument as an array. For example,
 let arr = [1, 2, 3];
 //then instead call we use apply
 obj2.add.apply(obj1, arr);
-console.log(obj2.add.apply(obj1, arr)); // 8
+// console.log(obj2.add.apply(obj1, arr)); // 8
+
+//or
+obj2.add.call(obj1, ...arr);
+// console.log(obj2.add.call(obj1, ...arr));// 8
 
 //how to use bind() method for this case
-console.log(obj2.add.bind(obj1, arr));
+obj2.add.bind(obj1, arr);
+// console.log(obj2.add.bind(obj1, arr));
 //it gives us :
 //ƒ (a, b, c) {
 //     return this.num + a + b + c;
 //   }
+
 console.dir(obj2.add.bind(obj1, arr));
 //result:
 // ƒ bound add()
@@ -188,4 +200,8 @@ console.dir(obj2.add.bind(obj1, arr));
 let bound = obj2.add.bind(obj1); //basically whatever 'this' keyword in obj2 look for it's value in obj1
 // console.log(bound); //gives us obj2 method
 //simply we can pass arg
-console.log(bound(1, 2, 3)); // 8
+bound(1, 2, 3);
+// console.log(bound(1, 2, 3)); // 8
+//or passing array
+bound(...arr);
+// console.log(bound(...arr)); // 8
