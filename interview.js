@@ -12,7 +12,8 @@ for (let i in x) {
 }
 console.log('Output for: xArr', xArr);
 
-//2.How to reverse a string
+//2.====================================================
+//How to reverse a string
 let y = 'hi';
 y = y
   .split('')
@@ -26,7 +27,7 @@ y = y
   .join('');
 console.log(y);
 
-//3.
+//3.==============================================
 let obj = {
   a: 1,
   b: 2,
@@ -62,11 +63,14 @@ obj = {
 // What modification can we do in our object to get result for:
 obj.getA().getB(); //prints 1 and 2
 
-//4.
+//4.======================================
 // [1, 2].print(); //should print 1,2
+
 // Array.prototype.print = function print() {
-//   this.forEach(elem => console.log(elem));
+//   this.forEach(elem => console.log(elem)); //prints 1 2
 // };
+
+//it should be ',' between 1 and 2
 Array.prototype.print = function() {
   let result = '';
   this.forEach((elem, i) => {
@@ -76,11 +80,141 @@ Array.prototype.print = function() {
   console.log(result);
 };
 [1, 2].print(); // 1,2
-// Array.prototype.print = function print() {
-//   let result = '';
-//   for (let [i, elem] of this) {
-//     if (i === this.length) result += elem;
-//     else result += `${elem},`;
-//   }
-//   console.log(result);
+//another way =>
+//we cannot use arrow function because of 'this' keyword
+//maybe some other solution without this keyword
+Array.prototype.print = function print() {
+  let result = '';
+  for (let i of this) {
+    if (i === this.length) result += i;
+    else result += `${i},`;
+  }
+  console.log(result);
+};
+[1, 2].print(); // 1,2
+//5.===================================
+//
+const a = function(x) {
+  this.x = x;
+};
+const b = function(x, y) {
+  this.y = y;
+  //   this.x = new a(x).x; //1.one solution
+  a.call(this, x); //2.another solution ===this.x=x
+};
+
+// //1.one way
+b.prototype = {
+  getX() {
+    console.log(this.x);
+    return this.x;
+  },
+};
+//2.another way
+// b.prototype.getX = function(x) {
+//   console.log(this.x);
+//   return this.x;
 // };
+
+//2.another way
+b.prototype.getY = function() {
+  console.log(this.y);
+  return this.y;
+};
+
+const newB = new b('x', 'y');
+
+newB.getX(); //x
+newB.getY(); //y
+
+//6.=====================================
+//How to deep clone, so when you change copy's property original will not mutate?
+const obj2 = {
+  a: {
+    b: {
+      c: 1,
+    },
+  },
+};
+// const clone =
+
+// clone.a.b.c = 2; // ?????????????
+// console.log(obj.a.b.c);
+
+const clone = JSON.parse(JSON.stringify(obj2));
+clone.a.b.c = clone.a.b.c + 1;
+console.log('Output for: obj2', obj2.a.b.c); //original not modified
+console.log('Output for: clone', clone.a.b.c); //2
+
+//7.=====================================================
+//concat and sort()
+const a1 = [1, 2, 5, 7, 9];
+const b1 = [2, 5, 7, 12, 100];
+//result should be const c= [1,2,2,5,5,7,7,12,100];
+
+const c = [...a1, ...b1];
+// const c = a1.concat(b1); //another way
+c.sort((a, b) => {
+  return a - b;
+});
+console.log('Output for: c', c);
+
+//8.==================================================
+
+let obj3 = {
+  x: 1,
+  getXX() {
+    const inner = function() {
+      console.log(this.x);
+    };
+    inner();
+  },
+};
+obj3.getXX(); //undefined should be 1
+
+//solution-1:
+obj3 = {
+  x: 1,
+  getXX() {
+    const inner = () => {
+      //<<==here
+      console.log(this.x);
+    };
+    inner();
+  },
+};
+obj3.getXX();
+//solution-2:
+obj3 = {
+  x: 1,
+  getXX() {
+    const inner = function() {
+      console.log(this.x);
+    }.bind(this); //<<<===here
+    inner();
+  },
+};
+obj3.getXX();
+//solution-3:
+obj3 = {
+  x: 1,
+  getXX() {
+    const that = this; //<<<===here
+    const inner = function() {
+      console.log(that.x);
+    };
+    inner();
+  },
+};
+obj3.getXX();
+//solution-4:
+obj3 = {
+  x: 1,
+  getXX() {
+    const inner = function() {
+      console.log(obj3.x);
+    };
+    inner();
+  },
+};
+obj3.getXX();
