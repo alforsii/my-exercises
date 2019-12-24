@@ -124,3 +124,51 @@ myObj = {
 };
 
 myObj.render();
+
+//conclusion: You can have 2 or more object and each object can have it's own properties and methods.
+//And you can access from one object to another objects properties by using call,apply or bind
+let obj1 = { num: 2 };
+let obj2 = {
+  add: function(a) {
+    return this.num + a;
+  },
+};
+//obj1 does not have any method,but obj 2 has a method but doesn't have any properties.
+//we can combine this 2 with call,apply or bind
+//whichever method going to execute goes first
+let result = obj2.add.call(obj1, 2); // 2 === a
+console.log('Output for: result', result); // result: 4
+//so in obj2.add by using call() this.num will be looking for num in obj1 and this keyword will be referred to obj1 in this case.
+//call takes 2 arguments: one is where to look another current argument
+// obj2.method.call(obj1,obj2(arg))
+
+//if we have obj2 method more that one argument
+obj2 = {
+  add: function(a, b, c) {
+    return this.num + a + b + c;
+  },
+};
+//then
+// obj2.add.call(obj1, a, b, c);
+//first argument in call have to be the object where we reference this keyword
+obj2.add.call(obj1, 1, 2, 3);
+console.log(obj2.add.call(obj1, 1, 2, 3)); // 8
+
+//what if we want to pass argument as an array. For example,
+let arr = [1, 2, 3];
+//then instead call we use apply
+obj2.add.apply(obj1, arr);
+console.log(obj2.add.apply(obj1, arr)); // 8
+
+//how to use bind() method for this case
+console.log(obj2.add.bind(obj1, arr));
+//it gives us :
+//ƒ (a, b, c) {
+//     return this.num + a + b + c;
+//   }
+console.dir(obj2.add.bind(obj1, arr)); //ƒ bound add()
+//
+let bound = obj2.add.bind(obj1); //whatever this keyword in obj2 look for it's value in obj1
+console.log(bound); //gives us obj2 method
+//simply we can pass arg
+console.log(bound(1, 2, 3)); // 8
