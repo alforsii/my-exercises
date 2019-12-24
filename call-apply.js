@@ -127,6 +127,7 @@ myObj.render();
 
 //conclusion: You can have 2 or more object and each object can have it's own properties and methods.
 //And you can access from one object to another objects properties by using call,apply or bind
+//===================================================================================================
 let obj1 = { num: 2 };
 let obj2 = {
   add: function(a) {
@@ -166,9 +167,25 @@ console.log(obj2.add.bind(obj1, arr));
 //ƒ (a, b, c) {
 //     return this.num + a + b + c;
 //   }
-console.dir(obj2.add.bind(obj1, arr)); //ƒ bound add()
-//
-let bound = obj2.add.bind(obj1); //whatever this keyword in obj2 look for it's value in obj1
-console.log(bound); //gives us obj2 method
+console.dir(obj2.add.bind(obj1, arr));
+//result:
+// ƒ bound add()
+// arguments: (...)
+// caller: (...)
+// length: 2
+// name: "bound add"
+// __proto__: ƒ ()
+// [[TargetFunction]]: ƒ (a, b, c)
+// [[BoundThis]]: Object
+// num: 2
+// __proto__: Object
+// [[BoundArgs]]: Array(1)
+// 0: (3) [1, 2, 3]
+// length: 1
+// __proto__: Array(0)
+
+//obj1 attached to obj2 with bind() method
+let bound = obj2.add.bind(obj1); //basically whatever 'this' keyword in obj2 look for it's value in obj1
+// console.log(bound); //gives us obj2 method
 //simply we can pass arg
 console.log(bound(1, 2, 3)); // 8

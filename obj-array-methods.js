@@ -1,5 +1,5 @@
 //1.
-let profile = { name: 'Jone', age: 33 };
+let profile = { name: 'John', age: 33 };
 //how to make this object properties const???
 Object.freeze(profile);
 //now you can't modify profile object.
