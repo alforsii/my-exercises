@@ -32,16 +32,17 @@ add(1, 2); //3
 let arr = [1, 2, 3, 4, 5, 7, 8, 9, 10];
 let missNumber = arr.filter((num, i) => {
   if (arr.indexOf(i + 1) == -1) {
-    console.log('missing:', num - 1);
+    console.log('missing:', num - 1); // 6
     return num - 1;
   }
 });
 
-//solution -2: ? not sure if this works. Need to fix
-// let len = arr.length;
-// let total = (len * (len + 1)) / 2;
-// let arrTotal = arr.reduce((t, i) => t + i);
-// console.log('missing:', total - arrTotal);
+//solution -2:
+let n = 10; //this is number of elements in array suppose to be
+let originTotal = (n * (n + 1)) / 2; //this will give us the sum of array if it has n number by order 1,2,3,4...and each elem uniq.
+let arrTotal = arr.reduce((t, i) => t + i); //sum for current array
+let missingNumber = originTotal - arrTotal;
+console.log('Output for: missingNumber', missingNumber); // 6
 
 //4.=======================================================
 //How to use min amount of coins to pay in cashier $20.47?
@@ -95,3 +96,30 @@ for (let i in til) {
     console.log('Needed', coinNeeded);
   }
 }
+
+//5. Reverse string
+let str = 'i love-javaScript';
+
+//Solution-1: reverse just the word
+let rts = str
+  .split('-')
+  .reverse()
+  .join('-');
+console.log('Output for: rts', rts); //javaScript-i love
+
+//Solution-2: reverse words and every letter
+rts = str
+  .split('')
+  .reverse()
+  .join('');
+console.log('Output for: rts', rts); //tpircSavaj-evol i
+
+//Solution-2: remove '-'
+rts = str.split('-').join(' ');
+console.log('Output for: rts', rts); //i love javaScript
+//and we can reverse
+rts = rts
+  .split(' ')
+  .reverse()
+  .join(' ');
+console.log('Output for: rts', rts); //javaScript love i
