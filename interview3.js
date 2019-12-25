@@ -13,7 +13,7 @@ function findMaxMin(array) {
 console.log(findMaxMin(arr));
 
 //2.How to find length of a given integer number without converting it into a string?
-let x = 12333; //len should be 4
+let x = 12333; //len should be 5
 let i = 1;
 let length = 1;
 let divide = 10;
