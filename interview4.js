@@ -119,7 +119,7 @@ x.a()
 
 //6.==============================================
 //convert to hex
-let num = 6640;
+let num = 148;
 //Solution-1:
 let toHex2 = num.toString(16);
 console.log('Hex:', toHex2);
@@ -190,7 +190,11 @@ function toHex(dec) {
 }
 
 toHex(num); //2
-toHex(256); //1NaNNaN
+toHex(256); //19F0
+toHex(255); //FF
+toHex(300); //12C
+toHex(211); //D3
+toHex(148); //94
 // toHex(590); //24E
 // toHex(56); //38
 // toHex(27); //1B
