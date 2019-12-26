@@ -1,5 +1,5 @@
 //1.call() method
-//Get arguments without passing it to a function
+//Get arguments without passing it to a function==================
 let argsToArr = function() {
   //   console.log(arguments); //result: Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
   return arguments;
@@ -13,7 +13,7 @@ argsToArr = function() {
 };
 argsToArr(1, 2, 3);
 
-//Another example for call method
+//Another example for call method===============================
 let animal = function(legs) {
   this.legs = legs;
 };
