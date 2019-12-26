@@ -1,0 +1,78 @@
+#box {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 20px solid red;
+  margin: 30px;
+  background-color: blue;
+  box-sizing: border-box;
+}
+
+/* 1st raul is it picks last if the same reference selector */
+/* ------------------------------------------------------- */
+body div:nth-child(2) {
+  background-color: red;
+}
+body div:nth-child(2) {
+  background-color: green;
+}
+/* 2nd raul is it picks the elements which has more specific reference selector
+in this case reference class is more specific than just div */
+/* ------------------------------------------------------- */
+div.class-name {
+  background-color: red;
+}
+div {
+  background-color: green;
+}
+
+/* 3rd ID wins over class,id is more priority that a class */
+/* ------------------------------------------------------- */
+#id-selector1 {
+  background-color: violet;
+}
+.class-name1 {
+  background-color: yellow;
+}
+
+/* 4th we can force class over id -->>  */
+/* ------------------------------------------------------- */
+.class-name2 {
+  background-color: yellow !important;
+}
+#id-selector2 {
+  background-color: violet;
+}
+
+/* 5th Positioning - position inner box center*/
+/* ------------------------------------------------------- */
+/* 1 way */
+.outer {
+  width: 400px;
+  height: 400px;
+  background-color: tomato;
+  position: relative;
+  margin: 10px;
+}
+.inner {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 2 way */
+.outer2 {
+  width: 400px;
+  height: 400px;
+  background-color: tomato;
+  margin: 10px;
+}
+.inner2 {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
