@@ -46,3 +46,5 @@ ob1
   .add(3)
   .subtract(2)
   .print();
+
+console.log('Output for: ob1', ob1); //check ob1 for closure i.
