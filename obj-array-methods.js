@@ -50,3 +50,13 @@ console.log('Output for: sort', sort);
 //to convert object to an array
 sort = [...sort];
 console.log('Output for: sort', sort);
+//convert to Object
+sort = { ...sort };
+console.log('Output for: sort', sort);
+//2 convert to array does not work, because spread operator is an array method
+//and does not work with objects.
+// sort = [...sort];//wrong
+//instead we can use Object method Object.values(object) to get the values;
+//convert from object to an array
+sort = Object.values(sort); //correct
+console.log('Output for: sort', sort);
