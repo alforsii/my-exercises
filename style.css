@@ -1,3 +1,4 @@
+/* 0 - Border box */
 #box {
   width: 100px;
   height: 100px;
@@ -46,7 +47,7 @@ div {
 
 /* 5th Positioning - position inner box center*/
 /* ------------------------------------------------------- */
-/* 1 way */
+/* 1 way center with position relative */
 .outer {
   width: 400px;
   height: 400px;
@@ -64,15 +65,70 @@ div {
   transform: translate(-50%, -50%);
 }
 
-/* 2 way */
+/* 2 way center with flex */
 .outer2 {
   width: 400px;
   height: 400px;
   background-color: tomato;
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .inner2 {
   width: 100px;
   height: 100px;
   background-color: green;
+}
+
+/* 6th What is difference between visibility hidden and display-none?*/
+/* ------------------------------------------------------- */
+
+/* display-none removes the element is not in the dom
+    visibility:hidden - element is in the dom but not visible
+*/
+
+/* 7 -How to make triangle with pure css ??*/
+/* ------------------------------------------------------- */
+#rect {
+  width: 200px;
+  height: 200px;
+  border-top: 10px solid red;
+  border-right: 10px solid blue;
+  border-bottom: 10px solid orange;
+  border-left: 10px solid black;
+}
+#four-tri {
+  width: 0px;
+  height: 0px;
+  border-top: 100px solid red;
+  border-right: 100px solid blue;
+  border-bottom: 100px solid orange;
+  border-left: 100px solid black;
+}
+#tri {
+  width: 0px;
+  height: 0px;
+  border-top: 100px solid white;
+  border-right: 100px solid white;
+  border-bottom: 100px solid orange;
+  border-left: 100px solid white;
+}
+
+/* 8 - what are sudo elements in css??*/
+/* ------------------------------------------------------- */
+
+p::after {
+  content: ' I am injected into P tag';
+}
+p:hover::after {
+  content: '';
+}
+
+/* 9- What are data attributes?*/
+/* ------------------------------------------------------- */
+
+.profile:hover::before {
+  display: inline-block;
+  content: attr(data-name);
 }
