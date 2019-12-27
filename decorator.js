@@ -1,17 +1,18 @@
-// let readonly = function(target, key, descriptor) {
-//   descriptor.writable = false;
-//   return descriptor;
-// };
+//this is a decorator method works with Babel transformer
+let readonly = function(target, key, descriptor) {
+  descriptor.writable = false;
+  return descriptor;
+};
 
 class Car {
   constructor(color) {
     this.color = color;
   }
 
-  //   @readonly //works with Babel transformer
-  getColor() {
-    return this.color;
-  }
+  // @readonly //this is a decorator method works with Babel transformer
+  //   getColor() {
+  //     return this.color;
+  //   }
 }
 
 let descriptor = {
