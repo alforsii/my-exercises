@@ -17,3 +17,11 @@ let tagged = function(strArr, ...vals) {
 };
 
 tagged`${a} plus ${b} equals ${a + b}`;
+//results:
+// Output for: sum 1 plus 2 equals 3
+// tagged-templates.js:9 vals: (3) [1, 2, 3]
+// tagged-templates.js:10 strArr: (4) ["", " plus ", " equals ", "", raw: Array(4)]
+// tagged-templates.js:11 ...strArr:   plus   equals
+// tagged-templates.js:12 [...strArr]: (4) ["", " plus ", " equals ", ""]
+// tagged-templates.js:13 ' [...strArr].join('').trim()'= plus  equals
+// tagged-templates.js:16 1  plus  2  equals  3
