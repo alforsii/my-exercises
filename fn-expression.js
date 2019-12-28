@@ -13,7 +13,7 @@
 // add1(i)
 //function invocation
 
-//iife
+//2.iife
 // DO NOT uncomment examples above if you are using prettier extension,
 // it will modify and cause problem with iife
 //a.
@@ -34,3 +34,8 @@
   console.log(i + 1);
   //   return i + 1;
 })(2);
+
+//using JQuery
+// (function($) {
+//   $(this).addClass('MyClass');
+// })(window.JQuery);
