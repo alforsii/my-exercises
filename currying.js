@@ -53,6 +53,13 @@ let num2 = function() {
 };
 console.log('using apply', num2(1, 2, 3));
 
+//d. [...arguments]
+//converts to an array
+let num3 = function() {
+  return [...arguments];
+};
+console.log('using [...arguments]', num3(1, 2, 3));
+
 //3.
 let saySomething = function(a) {
   return function(b) {
