@@ -32,11 +32,26 @@ console.log(doSumOfArr(2, 3, 5));
 // console.log(spiceUp(sumArr, 1, 2, 3)(2));
 // console.log(spiceUp(sumArr, 1, 2, 3)(2, 3, 5));
 
+//a. ...n
 //converts to an array
 let num = function(...n) {
   return n;
 };
-console.log(num(1, 2, 3));
+console.log('using ...n', num(1, 2, 3));
+
+//b. .call
+//converts to an array
+let num1 = function() {
+  return [].slice.call(arguments);
+};
+console.log('using call', num1(1, 2, 3));
+
+//c. .apply
+//converts to an array
+let num2 = function() {
+  return [].slice.apply(arguments);
+};
+console.log('using apply', num2(1, 2, 3));
 
 //3.
 let saySomething = function(a) {
