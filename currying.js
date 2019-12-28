@@ -58,7 +58,12 @@ console.log('using apply', num2(1, 2, 3));
 let num3 = function() {
   return [...arguments];
 };
-console.log('using [...arguments]', num3(1, 2, 3));
+//e. using arrow fn
+//converts to an array
+let num4 = (...n) => {
+  return n;
+};
+console.log('using =>', num4(1, 2, 3));
 
 //3.
 let saySomething = function(a) {
