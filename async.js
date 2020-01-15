@@ -3,7 +3,7 @@
 console.log('person1 shows ticket');
 console.log('person2 shows ticket');
 
-const preMovie = async () => {
+let preMovie = async () => {
   const person3PromiseToShowTicketWhenWifeArrives = new Promise(
     (resolve, reject) => {
       setTimeout(() => resolve('ticket'), 3000);
@@ -47,7 +47,7 @@ console.log('person4 shows ticket');
 console.log('person1 shows ticket');
 console.log('person2 shows ticket');
 
-const preMovie = async () => {
+preMovie = async () => {
   const person3PromiseToShowTicketWhenWifeArrives = new Promise(
     (resolve, reject) => {
       setTimeout(() => resolve('ticket'), 3000);
@@ -84,7 +84,7 @@ console.log('person4 shows ticket');
 
 //if reject try... catch
 
-const preMovie = async () => {
+preMovie = async () => {
   const person3PromiseToShowTicketWhenWifeArrives = new Promise(
     (resolve, reject) => {
       setTimeout(() => reject('ticket'), 3000);

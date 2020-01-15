@@ -14,14 +14,14 @@ argsToArr = function() {
 argsToArr(1, 2, 3);
 
 //Another example for call method===============================
-let animal = function(legs) {
+let Animal = function(legs) {
   this.legs = legs;
 };
-let cat = function(legs, isDomestic) {
-  animal.call(this, legs); //basically === to this.legs=legs; by using call() get argument from another object
+let Cat = function(legs, isDomestic) {
+  Animal.call(this, legs); //basically === to this.legs=legs; by using call() get argument from another object
   this.isDomestic = isDomestic;
 };
-let lion = new cat(4, false);
+let lion = new Cat(4, false);
 // console.log(lion); //result: cat {legs: 4, isDomestic: false}
 // ---------------------------------------------------------
 //2.apply() method
@@ -39,20 +39,21 @@ Math.min.apply(null, numArray);
 // console.log(Math.min.apply(null, numArray)); // 1
 // ----------------------------------------------------
 //3.bind() method
-let button = function(content) {
+let Button = function(content) {
   this.content = content;
 };
 
-button.prototype.click = function() {
+Button.prototype.click = function() {
   //   console.log(`${this.content} clicked`);
   return `${this.content} clicked`;
 };
-let newButton = new button('add');
+let newButton = new Button('add');
 newButton.click(); //add clicked
 let looseClick = newButton.click;
-// looseClick = newButton.click();//Uncaught TypeError: looseClick is not a function
-looseClick(); // undefined clicked
-//so in this situation we can use bind()
+// console.log(looseClick());//add clicked
+// looseClick = newButton.click();
+// looseClick(); // //Uncaught TypeError: looseClick is not a function
+//or we can use bind()
 let boundClick = newButton.click.bind(newButton);
 boundClick(); // add clicked
 // ===================================================
