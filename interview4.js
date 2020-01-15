@@ -6,8 +6,8 @@ let profile = {
     console.log(this.name);
   },
 };
-
 // profile.getName();
+
 //to fix that without using regular function =>
 //Solution-1:
 profile = {
@@ -17,18 +17,18 @@ profile = {
     console.log(profile.name);
   },
 };
+// profile.getName();
 
-profile.getName();
 //Solution-2:
 profile = {
   name: 'techSith',
-  getName: () => {
+  getName: function() {
     //problem here arrow function with 'this' keyword
     console.log(this.name);
   },
 };
 
-profile.getName();
+// profile.getName();
 //=======================================================
 //2.Find the number of max in array?
 let array = [1, 2, 2, 4, 2, 4, 4, 6];
@@ -80,7 +80,7 @@ function converter(t) {
   console.log(times247);
   return times247;
 }
-converter(time);
+// converter(time);
 
 //==========================================================
 //5.Method chaining
@@ -112,17 +112,17 @@ x = {
   },
 };
 
-x.a()
-  .b()
-  .a()
-  .a(); //result: a b a a
+// x.a()
+//   .b()
+//   .a()
+//   .a(); //result: a b a a
 
 //6.==============================================
 //convert to hex
-let num = 148;
+let num = 256;
 //Solution-1:
 let toHex2 = num.toString(16);
-console.log('Hex:', toHex2);
+// console.log('Hex:', toHex2);
 
 //Solution-2:
 // let hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F];
@@ -136,19 +136,7 @@ let hexObj = {
 };
 function toHex(dec) {
   let rem;
-  if (dec <= 16) {
-    if (dec > 10) {
-      rem = hexObj[dec - 1];
-      console.log(rem);
-      return rem;
-    } else {
-      rem = dec;
-      console.log(rem);
-      return rem;
-    }
-  }
-
-  rem = dec / 16; //
+  dec > 10 && dec <= 16 ? (rem = hexObj[dec - 1]) : (rem = dec / 16);
 
   if (dec % 16 === 0) {
     rem = rem.toString().split(' ');
@@ -175,26 +163,22 @@ function toHex(dec) {
     rem = [...rem[0], rem[1]];
   }
   //------check for hex-----
-  for (let i = 0; i < rem.length; i++) {
-    if (rem[i] >= 10) {
-      rem[i] = hexObj[rem[i]];
-    }
-  }
+  for (let i = 0; i < rem.length; i++)
+    if (rem[i] >= 10) rem[i] = hexObj[rem[i]];
+
   // ------------------------
   if (rem[0] == 0) rem.splice(0, 1);
 
-  rem = rem.join('');
-
-  console.log('Output for: rem', rem);
-  return rem;
+  console.log('HEX: ', rem.join(''));
+  return rem.join('');
 }
 
-toHex(num); //2
-toHex(256); //19F0
-toHex(255); //FF
-toHex(300); //12C
-toHex(211); //D3
-toHex(148); //94
+// toHex(num); //2
+// toHex(256); //100
+// toHex(255); //FF
+// toHex(300); //12C
+// toHex(211); //D3
+// toHex(148); //94
 // toHex(590); //24E
 // toHex(56); //38
 // toHex(27); //1B
